@@ -1,10 +1,9 @@
-import email
-from pyexpat import model
+import datetime
 from django.db import models
 
 # Create your models here.
 
-def target_name_creator(instance):
+def target_name_creator():
     nums = target.objects.count()
     return "target_"+str(nums)
             
@@ -27,9 +26,22 @@ class target(models.Model):
     tel=models.CharField(max_length=12,null=True, blank=True)
 
 
-    height= models.IntegerField()
-    weight = models.IntegerField()
-    armspan = models.IntegerField()
-    foot_length = models.IntegerField()
-    one_hand_length = models.IntegerField()
-    shoulder_size = models.IntegerField()
+    @property
+    def age(self):
+        today = datetime.date.today()
+        if self.dateofbirth:
+            born = self.dateofbirth
+        else:
+            born = datetime.date(2000,4,3)
+        
+        return today.year - born.year - ((today.month, today.day) < (born.month, born.day))
+
+    height= models.IntegerField(null=True)
+    weight = models.IntegerField(null=True)
+    armspan = models.IntegerField(null=True)
+    foot_length = models.IntegerField(null=True)
+    one_hand_length = models.IntegerField(null=True)
+    shoulder_size = models.IntegerField(null=True)
+
+    def __str__(self) -> str:
+        return self.name
