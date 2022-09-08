@@ -32,56 +32,73 @@ class get_Personal_information_form(forms.ModelForm):
 
 
 class get_height_form(forms.ModelForm):
-    class meta:
+    class Meta:
         model = target
         fields = ['height']
 
     def save(self, commit: bool = ...):
-        data = self.cleaned_data
-
+        self.instance = target.objects.get(pk=self.data['tr'])
+        self.instance.height = self.cleaned_data['height']
+    
         super().save(commit)
         return self.instance
 
 class get_weight_form(forms.ModelForm):
-    class meta:
+    class Meta:
         model = target
         fields = ['weight']
 
     def save(self, commit: bool = ...):
-        data = self.cleaned_data
+        self.instance = target.objects.get(pk=self.data['tr'])
+        self.instance.weight = self.cleaned_data['weight']
 
         super().save(commit)
         return self.instance
 
 class get_armspan_form(forms.ModelForm):
-    class meta:
+    class Meta:
         model = target
         fields = ['armspan']
 
     def save(self, commit: bool = ...):
-        data = self.cleaned_data
+        self.instance = target.objects.get(pk=self.data['tr'])
+        self.instance.armspan = self.cleaned_data['armspan']
 
         super().save(commit)
         return self.instance
 
 class get_foot_length_form(forms.ModelForm):
-    class meta:
+    class Meta:
         model = target
         fields = ['foot_length']
 
     def save(self, commit: bool = ...):
-        data = self.cleaned_data
+        self.instance = target.objects.get(pk=self.data['tr'])
+        self.instance.foot_length = self.cleaned_data['foot_length']
 
         super().save(commit)
         return self.instance
 
 class get_one_hand_length_form(forms.ModelForm):
-    class meta:
+    class Meta:
         model = target
         fields = ['one_hand_length']
 
     def save(self, commit: bool = ...):
-        data = self.cleaned_data
+        self.instance = target.objects.get(pk=self.data['tr'])
+        self.instance.one_hand_length = self.cleaned_data['one_hand_length']
+
+        super().save(commit)
+        return self.instance
+
+class get_shoulder_size_form(forms.ModelForm):
+    class Meta:
+        model = target
+        fields = ['shoulder_size']
+
+    def save(self, commit: bool = ...):
+        self.instance = target.objects.get(pk=self.data['tr'])
+        self.instance.shoulder_size = self.cleaned_data['shoulder_size']
 
         super().save(commit)
         return self.instance
