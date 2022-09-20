@@ -1,4 +1,5 @@
 import datetime
+from unicodedata import name
 from django.db import models
 
 # Create your models here.
@@ -36,12 +37,24 @@ class target(models.Model):
         
         return today.year - born.year - ((today.month, today.day) < (born.month, born.day))
 
-    height= models.IntegerField(null=True)
-    weight = models.IntegerField(null=True)
-    armspan = models.IntegerField(null=True)
-    foot_length = models.IntegerField(null=True)
-    one_hand_length = models.IntegerField(null=True)
-    shoulder_size = models.IntegerField(null=True)
+    height= models.PositiveIntegerField(null=True)
+    weight = models.PositiveIntegerField(null=True)
+    armspan = models.PositiveIntegerField(null=True)
+    foot_length = models.PositiveIntegerField(null=True)
+    one_hand_length = models.PositiveIntegerField(null=True)
+    shoulder_size = models.PositiveIntegerField(null=True)
 
     def __str__(self) -> str:
         return self.name
+
+
+class sport(models.Model):
+    en_name = models.CharField(max_length=50,default="None")
+    fa_name = models.CharField(max_length=50,default="None")
+
+
+    height= models.PositiveIntegerField(null=True)
+    armspan = models.PositiveIntegerField(null=True)
+    foot_length = models.PositiveIntegerField(null=True)
+    one_hand_length = models.PositiveIntegerField(null=True)
+    shoulder_size = models.PositiveIntegerField(null=True)
