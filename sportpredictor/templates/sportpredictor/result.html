@@ -4,19 +4,21 @@
 <body>
 
 <p>{{target.name}} your data is </p><br>
-<ul>
-    <li>height          :    {{target.height}}</li>
-    <li>weight          :    {{target.weight}}</li>
-    <li>armspan         :    {{target.armspan}}</li>
-    <li>foot length     :    {{target.foot_length}}</li>
-    <li>one hand length :    {{target.one_hand_length}}</li>
-    <li>shoulder size   :    {{target.shoulder_size}}</li>
 
+
+<ul>
+    {%for key, values in params.items %}
+    <li>{{key}}          :    {{values}}</li>
+    {%endfor%}
 </ul>
 <br>
 <h2>And your result is :</h2><br>
-<h4>Not Calculated</h4>
+<ul>
+{%for sp in sports%}
+<li>{{sp}}</li>
 
+{%endfor%}
+</ul>
 </body>
 
 </html>
