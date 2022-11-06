@@ -1,16 +1,31 @@
-<html>
-<head></head>
+<!DOCTYPE html>
+<html lang="en">
 
-<body>
-<p>this is homePage</p>
+<head>
+    {% load static %}
 
-<h1>lets start calculating</h1>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>SportHab</title>
+    
+    <link rel="stylesheet" href="{% static 'sportpredictor/assets/bootstrap/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'sportpredictor/assets/css/styles.min.css' %}">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Arbutus&amp;display=swap">
+</head>
 
-
-<a href="information"><button>START</button></a>
-
-
-
+<body class="d-flex align-items-start">
+    <div class="d-inline-block side_pics" ><img src="{% static 'sportpredictor/img/2.png' %}" style="width: 100%;"></div>
+    <div class="d-inline-block" style="width: 60%;margin: auto;">
+        <div class="container" style="margin: 50px auto;">
+            <div class="row">
+                <div class="col text-center"><img src="{% static 'sportpredictor/img/SportHab.png' %}" style="width: 200px;"></div>
+            </div>
+        </div>
+        <div class="container" style="text-align: center;"><a href="information"><button class="btn btn-primary" type="button" style="font-size: 1.5rem;font-family: Arbutus, serif;">Start</button></a></div>
+    </div>
+    <div class="d-flex d-xl-flex align-items-end align-items-xl-end side_pics" style="height: 100%;"><img src="{% static 'sportpredictor/img/1.png' %}" style="width: 100%;"></div>
+    
+    <script src="{% static 'sportpredictor/assets/bootstrap/js/bootstrap.min.js' %}"></script>
 </body>
 
 </html>

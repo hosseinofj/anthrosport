@@ -5,7 +5,7 @@ import datetime
 
 class targetAdmin(admin.ModelAdmin):
 
-    list_display = ('pk','name','gender','age','shoulder_size','height','weight','armspan')
+    list_display = ('pk','name','gender','age','shoulder_size','height','foot_length','armspan','back_flexibility','shoulder_flexibility')
 
 class sportAdmin(admin.ModelAdmin):
 
@@ -25,9 +25,11 @@ class sportAdmin(admin.ModelAdmin):
 
 class mediansAdmin(admin.ModelAdmin):
 
-    list_display = ('name','count','value')
+    list_display = ('name','count','Average_value',"min","max")
 
 
 admin.site.register(target,targetAdmin)
 admin.site.register(sport,sportAdmin)
 admin.site.register(medians,mediansAdmin)
+
+

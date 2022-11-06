@@ -1,4 +1,5 @@
 import datetime
+from email.policy import default
 from pyexpat import model
 from django.db import models
 
@@ -45,21 +46,22 @@ class target(models.Model):
         now = datetime.date.today().year
         return (now-self.age)
 
-    height= models.PositiveIntegerField(null=True)
-    weight = models.PositiveIntegerField(null=True)
-    armspan = models.PositiveIntegerField(null=True)
-    foot_length = models.PositiveIntegerField(null=True)
-    one_hand_length = models.PositiveIntegerField(null=True)
-    shoulder_size = models.PositiveIntegerField(null=True)
-    waist = models.PositiveIntegerField(null=True)
-    neck = models.PositiveIntegerField(null=True)
-    hip = models.PositiveIntegerField(null=True)
+    height= models.FloatField(null=True)
+    weight = models.FloatField(null=True)
+    armspan = models.FloatField(null=True)
+    foot_length = models.FloatField(null=True)
+    one_hand_length = models.FloatField(null=True)
+    shoulder_size = models.FloatField(null=True)
+    waist = models.FloatField(null=True)
+    neck = models.FloatField(null=True)
+    hip = models.FloatField(null=True)
 
-    fat = models.PositiveIntegerField(null=True)
+    fat = models.FloatField(null=True)
     
-    back_flexibility = models.PositiveIntegerField(null=True)
-    shoulder_flexibility = models.PositiveIntegerField(null=True)
-    finger_ratio_2_4 = models.PositiveIntegerField(null=True)
+    back_flexibility = models.FloatField(null=True)
+    shoulder_flexibility = models.FloatField(null=True)
+    finger_2 = models.FloatField(null=True)
+    finger_4 = models.FloatField(null=True)
     super_test_1 = models.PositiveIntegerField(null=True)
     super_test_2 = models.PositiveIntegerField(null=True)
     super_test_3 = models.PositiveIntegerField(null=True)
@@ -96,7 +98,26 @@ class sport(models.Model):
 class medians(models.Model):
     name = models.CharField(max_length = 40,default="none")
     count = models.PositiveIntegerField(default=0)
-    value = models.IntegerField()
+    
+    max = models.FloatField(default=0)
+    min =models.FloatField(default=0)
+
+    stage_1_min = models.FloatField(default=0)
+    stage_1_max = models.FloatField(default=0)
+    
+    stage_2_min = models.FloatField(default=0)
+    stage_2_max = models.FloatField(default=0)
+    
+    stage_3_min = models.FloatField(default=0)
+    stage_3_max = models.FloatField(default=0)
+    
+    stage_4_min = models.FloatField(default=0)
+    stage_4_max = models.FloatField(default=0)
+    
+    stage_5_min = models.FloatField(default=0)
+    stage_5_max = models.FloatField(default=0)
+
+    Average_value = models.FloatField(default=0)
 
 
     def __str__(self):

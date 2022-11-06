@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SportHab</title>
+
+    <style>
+        body {
+            
+            background-color: #004AAC;
+            box-shadow: inset 0px -50px 24px -14px #51ABE3;
+            margin: 0px;
+            height: 100vh;
+            width: 100vw;
+            position: relative;
+        }
+        .left {
+            display: block;
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 30vw;
+            height: 100%;
+            background-image: url("{% static 'sportpredictor/img/4.png' %}");
+            background-repeat: repeat-y;
+            background-size: contain;
+        }
+
+        .midle {
+            display: block;
+            margin: 0 auto;
+            width: 70vw;
+            height: 100%;
+        }
+        .right {
+            display: block;
+            position: absolute;
+            right: 0;
+            top: 0;
+            width: 30vw;
+            height: 100%;
+            background-image: url("{% static 'sportpredictor/img/5.png' %}");
+            background-repeat: repeat-y;
+            background-size: contain;
+        }
+        .logo{
+            display: block;
+            margin: 30px auto 0 auto;
+            width: 20vw;
+        }
+        .form{
+            display: block;
+            width: 100%;
+        }
+        .grid-container {
+            direction: rtl;
+            display: grid;
+            grid-template-columns: 40% 40%;
+            row-gap: 15%;
+            column-gap: 10%;
+            background-color: rgba(0, 0, 0, 0);
+            padding: 10px;
+        }
+        button , input, .inputbox{
+            display: block;
+            width: 25vw;
+            height: 5vw;
+            text-align: center;
+            border-radius: 5vw;
+            border: 0px;
+            background-color: #51ABE3;
+            font-size: medium;
+            color: black;
+           
+        }
+        input::placeholder{
+            color:#004AAC;
+            opacity: 0.6;
+        }
+        button{            
+            background-color: #85cefc;
+            font-size: x-large;
+            font-weight: bold;
+            color: #004AAC;
+
+        }
+    </style>
+</head>
+<body>
+    <div class="left"></div>
+    <div class="midle">
+        <div class="logo"><img src="{% static 'sportpredictor/img/SportHab.png' %}" style="width: 100%;"></div>
+        <form action="" method="post" class="form">
+            {% csrf_token %}
+            <div class="grid-container">
+                
+                <input type="text" placeholder="Name" name="name" style=" {% if form.name.errors %} border:2px red solid; {% endif %} " >    
+                    <select class="inputbox" id="gender" style="text-align: right;" name="gender">
+                        <optgroup label="gender" name="gender" class="inputbox">
+                            <option class ="inputbox" value="M" >Male</option>
+                            <option class ="inputbox" value="F" >Female</option>
+                        </optgroup>
+                    </select>
+                <input type="number" placeholder="age" name="age"  style=" {% if form.age.errors %} border:2px red solid; {% endif %} ">
+                <input type="text" placeholder="nationality" name="nationality" value="Not Associated" style=" {% if form.nationality.errors %} border:2px red solid; {% endif %} ">
+                <input type="text" placeholder="Location" name="Location" value="Not Associated"  style=" {% if form.Location.errors %} border:2px red solid; {% endif %} ">
+                <input type="email" placeholder="Email" name="e_mail" style=" {% if form.e_mail.errors %} border:2px red solid; {% endif %} ">
+                <input type="number" placeholder="Tel" name="tel" style=" {% if form.tel.errors %} border:2px red solid; {% endif %} ">
+                <button type="submit" name="save" value="save" >Save</button>
+
+            </div>
+
+
+
+
+        </form>
+
+
+    </div>
+    <div class="right"></div>
+
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

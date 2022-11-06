@@ -17,6 +17,8 @@ urlpatterns = [
     path('finger_ratio_2_4',views.get_finger_ratio_2_4,name="finger_ratio_2_4"),
     path('super_test',views.get_super_test,name="super_test"),
     path('result',views.take_result,name="result"),
-    path('do',views.do,name="do"),
+    path('do/<pk>',views.do,name="do"),
+    path('remedian',views.recalc_medians,name="remedian"),
+    
     
 ]

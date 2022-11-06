@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SportHab</title>
+
+    <style>
+        body {
+            
+            background-color: #004AAC;
+            box-shadow: inset 0px -50px 24px -14px #51ABE3;
+            margin: 0px;
+            height: 100vh;
+            width: 100vw;
+            position: relative;
+        }
+        .left {
+            display: block;
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 30vw;
+            height: 100%;
+            background-image: url("{% static 'sportpredictor/img/4.png' %}");
+            background-repeat: repeat-y;
+            background-size: contain;
+        }
+
+        .midle {
+            display: block;
+            margin: 0 auto;
+            width: 70vw;
+            height: 100%;
+        }
+        .right {
+            display: block;
+            position: absolute;
+            right: 0;
+            top: 0;
+            width: 30vw;
+            height: 100%;
+            background-image: url("{% static 'sportpredictor/img/5.png' %}");
+            background-repeat: repeat-y;
+            background-size: contain;
+        }
+        .logo{
+            display: block;
+            margin: 30px auto 0 auto;
+            width: 20vw;
+        }
+        .form{
+            display: block;
+            width: 100%;
+        }
+        button , input, .inputbox{
+            display: block;
+            width: 25vw;
+            height: 5vw;
+            text-align: center;
+            border-radius: 5vw;
+            border: 0px;
+            background-color: #51ABE3;
+            font-size: medium;
+            color: black;
+            margin: 10vh auto;
+           
+        }
+        input::placeholder{
+            color:#004AAC;
+            opacity: 0.6;
+        }
+        button{            
+            background-color: #85cefc;
+            font-size: x-large;
+            font-weight: bold;
+            color: #004AAC;
+
+        }
+        label {
+            display: block;
+            margin: 0 auto;
+            width: auto;
+            text-align: center;
+            font-size: xxx-large;
+            color: #51ABE3;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="left"></div>
+    <div class="midle">
+        <div class="logo"><img src="{% static 'sportpredictor/img/SportHab.png' %}" style="width: 100%;"></div>
+        <form action="" method="post" class="form">
+            {% csrf_token %}
+            {% for field in form %}
+            
+                <label >{{field.name}}</label>
+                
+                <input type="number" step="0.01" name="{{field.name}}">
+                {{field.errors}}
+            
+            {% endfor %}
+            
+            <button type="submit" >Next</button>
+
+        </form>
+
+
+    </div>
+    <div class="right"></div>
+
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- 
+
+
+
+
+
+
+<form action="" method="post">
+    {% csrf_token %}
+    
+    
+    {% for field in form %}
+
+    
+    <div class="row">
+        <div class="col-md-2">    
+         {{ field.label_tag }}
+         {% if field.help_text %}
+           <sup>{{ field.help_text }}</sup>
+         {% endif %}
+         {{ field.errors }}
+        </div><div class="col-md-10 pull-left">
+          {{ field }}
+        </div>
+     </div>
+    {% endfor %}
+    <input type="submit" value="Submit">
+</form>
+
+
+
+
+
+</body>
+
+</html> -->

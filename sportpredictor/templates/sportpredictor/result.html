@@ -1,24 +1,177 @@
-<html>
-<head></head>
+<!DOCTYPE html>
+<html lang="en">
+    {% load static %}
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>SportHab Result</title>
+    <link rel="stylesheet" href="{% static 'sportpredictor/assets/bootstrap/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'sportpredictor/assets/css/styles.min.css' %}">
+    <style>
+        .sp_img{
+            height: 10vh;
+        }
+        .sp_name{
+            font-size: x-large;
+            font-weight: bolder;
+        }
+    </style>
+</head>
 
-<body>
-
-<p>{{target.name}} your data is </p><br>
-
-
-<ul>
-    {%for key, values in params.items %}
-    <li>{{key}}          :    {{values}}</li>
-    {%endfor%}
-</ul>
-<br>
-<h2>And your result is :</h2><br>
-<ul>
-{%for sp in sports%}
-<li>{{sp}}</li>
-
-{%endfor%}
-</ul>
+<body style="background: #004AAC;box-shadow: inset 0px -50px 24px 0px #51abe3;height: 100vh;">
+    <div class="container d-flex justify-content-center" style="padding-top: 30px;"><img class="d-flex" src="{% static 'sportpredictor/img/SportHab.png' %}" style="width: 86px;"></div>
+    <div class="container" style="border-radius: 51px;background: var(--bs-blue);margin: 0px 10px;max-width: 95vw;padding-top: 22px;">
+        <h5>{{tr.name}}</h5>
+        <h6>Your Data:</h6>
+        <div class="row">
+            <div class="col d-block d-lg-flex justify-content-lg-center position-relative inputed_colmn">
+                <h6 class="text-start text-black-50 inputed_label">Age:</h6><strong class="d-sm-flex justify-content-sm-center position-absolute inputed_val">{{tr.age}}</strong>
+            </div>
+            <div class="col position-relative inputed_colmn">
+                <h6 class="text-start text-black-50 inputed_label">Height:</h6><strong class="d-block float-none d-sm-flex justify-content-sm-center position-absolute inputed_val">{{tr.height}}</strong>
+            </div>
+            <div class="col position-relative inputed_colmn">
+                <h6 class="text-start text-black-50 inputed_label">Weight:</h6><strong class="d-block float-none d-sm-flex justify-content-sm-center position-absolute inputed_val">{{tr.weight}}</strong>
+            </div>
+            <div class="col position-relative inputed_colmn">
+                <h6 class="text-start text-black-50 inputed_label">foot Length:</h6><strong class="d-block float-none d-sm-flex justify-content-sm-center position-absolute inputed_val">{{tr.foot_length}}</strong>
+            </div>
+            <div class="col position-relative inputed_colmn">
+                <h6 class="text-start text-black-50 inputed_label">Hand Length:</h6><strong class="d-block float-none d-sm-flex justify-content-sm-center position-absolute inputed_val">{{tr.one_hand_length}}</strong>
+            </div>
+            <div class="col position-relative inputed_colmn">
+                <h6 class="text-start text-black-50 inputed_label">Neck:</h6><strong class="d-block float-none d-sm-flex justify-content-sm-center position-absolute inputed_val">{{tr.neck}}</strong>
+            </div>
+            <div class="col position-relative inputed_colmn">
+                <h6 class="text-start text-black-50 inputed_label">Waist:</h6><strong class="d-block float-none d-sm-flex justify-content-sm-center position-absolute inputed_val">{{tr.waist}}</strong>
+            </div>
+            <div class="col position-relative inputed_colmn">
+                <h6 class="text-start text-black-50 inputed_label">Shoulder:</h6><strong class="d-block float-none d-sm-flex justify-content-sm-center position-absolute inputed_val">{{tr.shoulder_size}}</strong>
+            </div>
+            <div class="col position-relative inputed_colmn">
+                <h6 class="text-start text-black-50 inputed_label">Back Flexibility:</h6><strong class="d-block float-none d-sm-flex justify-content-sm-center position-absolute inputed_val">{{tr.back_flexibility}}</strong>
+            </div>
+            <div class="col position-relative inputed_colmn">
+                <h6 class="text-start text-black-50 inputed_label">Shoulder Flexibility:</h6><strong class="d-block float-none d-sm-flex justify-content-sm-center position-absolute inputed_val">{{tr.shoulder_flexibility}}</strong>
+            </div>
+            <div class="col position-relative inputed_colmn">
+                <h6 class="text-start text-black-50 inputed_label">Finger 2,4 :</h6><strong class="d-block float-none d-sm-flex justify-content-sm-center position-absolute inputed_val">{{tr.finger_2}} - {{tr.finger_4}}</strong>
+            </div>
+            <div class="col position-relative inputed_colmn">
+                <h6 class="text-start text-black-50 inputed_label">Super Test:</h6><strong class="d-block float-none d-sm-flex justify-content-sm-center position-absolute inputed_val">{{tr.super_test_1}}:{{tr.super_test_2}}:{{tr.super_test_3}}</strong>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col d-flex d-lg-flex justify-content-center justify-content-lg-center align-items-lg-center">
+                <div class="d-lg-flex justify-content-lg-center align-items-lg-center">
+                    <h1 class="d-inline-block">Fat:</h1><strong class="d-inline-block" style="padding-left: 25px;">{{tr.fat|floatformat:2}} %</strong>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container" style="border-radius: 51px;background: var(--bs-blue);margin: 20px 10px;max-width: 95vw;padding-top: 22px;">
+        <div class="row">
+            <div class="col d-flex justify-content-center">
+                <h1>Result</h1>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <div class="row">
+                    <div class="col">
+                        <div class="row d-sm-flex justify-content-sm-center">
+                            <div class="col d-flex justify-content-center align-items-center justify-content-sm-center">
+                                <h1 class="d-inline-block sp_name" style="margin-left: 15px;">{{sps.0.0}}</h1>
+                            </div>
+                            <div class="col d-flex d-md-flex justify-content-center justify-content-md-center"><img class="d-inline-block sp_img" src="{% static 'sportpredictor/img/sports/'|add:sps.0.2|add:'.png'  %}"></div>
+                            <div class="col-sm-8 d-flex justify-content-center align-items-md-center align-items-xl-center" style="margin-top: 8px;margin-bottom: 10px;">
+                                <div class="progress d-inline-block" style="width: 90%;box-shadow: 0px 3px 10px 3px;border-radius: 20px;">
+                                    <div class="progress-bar bg-success progress-bar-striped progress-bar-animated" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100" style="width: {{sps.0.1}}%;">{{sps.0.1}}%</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <div class="row">
+                    <div class="col">
+                        <div class="row d-sm-flex justify-content-sm-center">
+                            <div class="col d-flex justify-content-center align-items-center justify-content-sm-center">
+                                <h1 class="d-inline-block sp_name" style="margin-left: 15px;">{{sps.1.0}}</h1>
+                            </div>
+                            <div class="col d-flex d-md-flex justify-content-center justify-content-md-center"><img class="d-inline-block sp_img" src="{% static 'sportpredictor/img/sports/'|add:sps.1.2|add:'.png'  %}"></div>
+                            <div class="col-sm-8 d-flex justify-content-center align-items-md-center align-items-xl-center" style="margin-top: 8px;margin-bottom: 10px;">
+                                <div class="progress d-inline-block" style="width: 90%;box-shadow: 0px 3px 10px 3px;border-radius: 20px;">
+                                    <div class="progress-bar bg-success progress-bar-striped progress-bar-animated" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100" style="width: {{sps.1.1}}%;">{{sps.1.1}}%</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <div class="row">
+                    <div class="col">
+                        <div class="row d-sm-flex justify-content-sm-center">
+                            <div class="col d-flex justify-content-center align-items-center justify-content-sm-center">
+                                <h1 class="d-inline-block sp_name" style="margin-left: 15px;">{{sps.2.0}}</h1>
+                            </div>
+                            <div class="col d-flex d-md-flex justify-content-center justify-content-md-center"><img class="d-inline-block sp_img" src="{% static 'sportpredictor/img/sports/'|add:sps.2.2|add:'.png'  %}"></div>
+                            <div class="col-sm-8 d-flex justify-content-center align-items-md-center align-items-xl-center" style="margin-top: 8px;margin-bottom: 10px;">
+                                <div class="progress d-inline-block" style="width: 90%;box-shadow: 0px 3px 10px 3px;border-radius: 20px;">
+                                    <div class="progress-bar bg-success progress-bar-striped progress-bar-animated" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100" style="width: {{sps.2.1}}%;">{{sps.2.1}}%</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <div class="row">
+                    <div class="col">
+                        <div class="row d-sm-flex justify-content-sm-center">
+                            <div class="col d-flex justify-content-center align-items-center justify-content-sm-center">
+                                <h1 class="d-inline-block sp_name" style="margin-left: 15px;">{{sps.3.0}}</h1>
+                            </div>
+                            <div class="col d-flex d-md-flex justify-content-center justify-content-md-center"><img class="d-inline-block sp_img"  src="{% static 'sportpredictor/img/sports/'|add:sps.3.2|add:'.png'  %}"></div>
+                            <div class="col-sm-8 d-flex justify-content-center align-items-md-center align-items-xl-center" style="margin-top: 8px;margin-bottom: 10px;">
+                                <div class="progress d-inline-block" style="width: 90%;box-shadow: 0px 3px 10px 3px;border-radius: 20px;">
+                                    <div class="progress-bar bg-success progress-bar-striped progress-bar-animated" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100" style="width: {{sps.3.1}}%;">{{sps.3.1}}%</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <div class="row">
+                    <div class="col">
+                        <div class="row d-sm-flex justify-content-sm-center">
+                            <div class="col d-flex justify-content-center align-items-center justify-content-sm-center">
+                                <h1 class="d-inline-block sp_name" style="margin-left: 15px;">{{sps.4.0}}</h1>
+                            </div>
+                            <div class="col d-flex d-md-flex justify-content-center justify-content-md-center"><img class="d-inline-block sp_img" src="{% static 'sportpredictor/img/sports/'|add:sps.4.2|add:'.png'  %}"></div>
+                            <div class="col-sm-8 d-flex justify-content-center align-items-md-center align-items-xl-center" style="margin-top: 8px;margin-bottom: 10px;">
+                                <div class="progress d-inline-block" style="width: 90%;box-shadow: 0px 3px 10px 3px;border-radius: 20px;">
+                                    <div class="progress-bar bg-success progress-bar-striped progress-bar-animated" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100" style="width: {{sps.4.1}}%;">{{sps.4.1}}%</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="{% static 'sportpredictor/assets/bootstrap/js/bootstrap.min.js' %}"></script>
 </body>
 
 </html>

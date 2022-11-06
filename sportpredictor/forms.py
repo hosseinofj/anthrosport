@@ -1,5 +1,5 @@
-from dataclasses import fields
-from unicodedata import name
+# from dataclasses import fields
+# from unicodedata import name
 from django import forms
 from .models import target
 from django.db.models import Q
@@ -11,6 +11,7 @@ class get_Personal_information_form(forms.ModelForm):
     class Meta:
         model = target
         fields = ['name','gender','age','nationality','Location','e_mail','tel']
+
 
     def save(self, commit: bool = ...):
         data = self.cleaned_data
@@ -26,7 +27,8 @@ class get_Personal_information_form(forms.ModelForm):
         else:
             q = target.objects.all().filter(Q(e_mail=t_email))
             if len(q)>0:
-                return q[0]
+                # return q[0]
+                pass
         self.instance.save()
         return self.instance
 
@@ -103,7 +105,22 @@ class get_shoulder_size_form(forms.ModelForm):
         super().save(commit)
         return self.instance
 
-class get_fat_form(forms.ModelForm):
+class get_fat_form_male(forms.ModelForm):
+    class Meta:
+        model = target
+        fields = ['waist','neck']
+
+    def save(self, commit: bool = ...):
+        self.instance = target.objects.get(pk=self.data['tr'])
+        self.instance.waist = self.cleaned_data['waist']
+        self.instance.neck = self.cleaned_data['neck']
+        # self.instance.hip = self.cleaned_data['hip']
+        self.instance.fat = fat_calcer(self.cleaned_data['waist'],self.cleaned_data['neck'],self.instance.height,0,self.instance.gender)
+
+        super().save(commit)
+        return self.instance
+
+class get_fat_form_female(forms.ModelForm):
     class Meta:
         model = target
         fields = ['waist','neck','hip']
@@ -117,7 +134,7 @@ class get_fat_form(forms.ModelForm):
 
         super().save(commit)
         return self.instance
-
+     
 class get_back_flexibility_form(forms.ModelForm):
     class Meta:
         model = target
@@ -145,11 +162,12 @@ class get_shoulder_flexibility_form(forms.ModelForm):
 class get_finger_ratio_2_4_form(forms.ModelForm):
     class Meta:
         model = target
-        fields = ['finger_ratio_2_4']
+        fields = ['finger_2','finger_4']
 
     def save(self, commit: bool = ...):
         self.instance = target.objects.get(pk=self.data['tr'])
-        self.instance.finger_ratio_2_4 = self.cleaned_data['finger_ratio_2_4']
+        self.instance.finger_2 = self.cleaned_data['finger_2']
+        self.instance.finger_4 = self.cleaned_data['finger_4']
 
         super().save(commit)
         return self.instance

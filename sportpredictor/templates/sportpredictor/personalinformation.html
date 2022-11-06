@@ -1,20 +1,64 @@
-<html>
-<head></head>
+<!DOCTYPE html>
+<html lang="en">
 
-<body>
+<head>
+    {% load static %}
 
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>SportHab</title>
 
+    <link rel="stylesheet" href="{% static 'sportpredictor/assets/bootstrap/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'sportpredictor/assets/css/styles.min.css' %}">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Arbutus&amp;display=swap">
+</head>
 
-<form action="" method="post">
-    {% csrf_token %}
-    {{form.as_p}}
-    <input type="submit" value="Submit">
-</form>
+<body class="d-flex align-items-start" style="height: 100%;">
+    <div class="side_pics" style="background: url({% static 'sportpredictor/img/4.png' %}) repeat;background-size: contain;width: 15%;height: 100vh;"></div>
+    <div class="d-inline-block" style="width: 70%;margin: auto;">
+        <div class="container" style="margin: 50px auto;">
+            <div class="row">
+                <div class="col text-center"><img src="{% static 'sportpredictor/img/SportHab.png' %}" style="width: 100px;"></div>
+            </div>
+        </div>
+        <div class="container" style="text-align: center;padding-bottom: 25px;">
+            <form action="" method="post" class="form">
+            {% csrf_token %}
 
-
-
-
-
+                <div class="row">
+                    <div class="col-8 col-md-3 col-lg-2 d-flex align-items-center" style="height: 60px;"><label class="col-form-label" style="font-family: Arbutus, serif;color: #51abe3;">Name :</label></div>
+                    <div class="col-12 col-md-8 col-lg-4 d-flex align-items-center" style="height: 60px;"><input class="form-control" type="text" name="name" style="background: #51abe3;border-radius: 15px;border-width: 0px;{% if form.name.errors %} border:2px red solid; {% endif %}"></div>
+                    <div class="col-8 col-md-3 col-lg-2 d-flex align-items-center" style="height: 60px;"><label class="col-form-label" style="font-family: Arbutus, serif;color: #51abe3;">Gender :</label></div>
+                    <div class="col-12 col-md-8 col-lg-4 d-flex align-items-center" style="height: 60px;">
+                        <select class="form-select" name="gender" style="background: #51abe3;border-radius: 15px;border-width: 0px;">
+                        <optgroup label="Gender" name="gender">
+                            <option value="M" selected="">Male</option>
+                            <option value="F">Female</option>
+                        </optgroup>
+                    </select></div>
+                </div>
+                <div class="row">
+                    <div class="col-8 col-md-3 col-lg-2 d-flex align-items-center" style="height: 60px;"><label class="col-form-label" style="font-family: Arbutus, serif;color: #51abe3;">Age :</label></div>
+                    <div class="col-12 col-md-8 col-lg-4 d-flex align-items-center" style="height: 60px;"><input class="form-control" type="text"name="age" style="background: #51abe3;border-radius: 15px;border-width: 0px;{% if form.age.errors %} border:2px red solid; {% endif %}"></div>
+                    <div class="col-8 col-md-3 col-lg-2 d-flex align-items-center" style="height: 60px;"><label class="col-form-label" style="font-family: Arbutus, serif;color: #51abe3;">Nation :</label></div>
+                    <div class="col-12 col-md-8 col-lg-4 d-flex align-items-center" style="height: 60px;"><input class="form-control" type="text"name="nationality" value="Not Associated" style="background: #51abe3;border-radius: 15px;border-width: 0px;{% if form.nationality.errors %} border:2px red solid; {% endif %}"></div>
+                </div>
+                <div class="row">
+                    <div class="col-8 col-md-3 col-lg-2 d-flex align-items-center" style="height: 60px;"><label class="col-form-label" style="font-family: Arbutus, serif;color: #51abe3;">Location :</label></div>
+                    <div class="col-12 col-md-8 col-lg-4 d-flex align-items-center" style="height: 60px;"><input class="form-control" type="text" name="Location" value="Not Associated" style="background: #51abe3;border-radius: 15px;border-width: 0px;{% if form.Location.errors %} border:2px red solid; {% endif %}"></div>
+                    <div class="col-8 col-md-3 col-lg-2 d-flex align-items-center" style="height: 60px;"><label class="col-form-label" style="font-family: Arbutus, serif;color: #51abe3;">Email :</label></div>
+                    <div class="col-12 col-md-8 col-lg-4 d-flex align-items-center" style="height: 60px;"><input class="form-control" type="text" name="e_mail" style="background: #51abe3;border-radius: 15px;border-width: 0px;{% if form.e_mail.errors %} border:2px red solid; {% endif %}"></div>
+                </div>
+                <div class="row">
+                    <div class="col-8 col-md-3 col-lg-2 d-flex align-items-center" style="height: 60px;"><label class="col-form-label" style="font-family: Arbutus, serif;color: #51abe3;">Tel :</label></div>
+                    <div class="col-12 col-md-8 col-lg-4 d-flex align-items-center" style="height: 60px;"><input class="form-control" type="text"name="tel" style="background: #51abe3;border-radius: 15px;border-width: 0px;{% if form.tel.errors %} border:2px red solid; {% endif %}"></div>
+                    <div class="col d-flex align-items-center"><button class="btn btn-primary" type="submit" name="save" value="save" style="width: 100%;border-radius: 15px;">Next</button></div>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="d-flex d-xl-flex align-items-end align-items-xl-end side_pics" style="height: 100vh;background: url({% static 'sportpredictor/img/5.png' %}) repeat-y;background-size: contain;width: 15%;"></div>
+    <script src="{% static 'sportpredictor/assets/bootstrap/js/bootstrap.min.js' %}"></script>
 </body>
 
 </html>
